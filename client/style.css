@@ -1,0 +1,31 @@
+html {
+	overflow: hidden;
+	display: block;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+#chat_input {
+	width: 100%;
+	position: fixed;
+	bottom: 4px;
+	border:1px solid #000000;
+}
+
+#chatDiv {
+	background-color: #EEEEEE;
+	width: 100%;
+	border:1px solid #000000;
+	overflow-y: scroll;
+	overflow: scroll;
+	height: -o-calc(100% - 32px); /* opera */
+	height: -webkit-calc(100% - 32px); /* google, safari */
+	height: -moz-calc(100% - 32px); /* firefox */
+}
