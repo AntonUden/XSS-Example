@@ -48,4 +48,5 @@ io.sockets.on("connection", function(socket) {
 		} catch(err) {}
 	});
 });
+console.log("[Warning] Don't use this as a real chat. It is vulnerable to xss attacks and should only be used to learn how to perform or protect against xss attacks");
 console.log("Server started");
