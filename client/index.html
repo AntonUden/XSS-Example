@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" type="text/css" href="/client/style.css">
-</head>
-<body>
-	<div id="chatDiv">
-		
-	</div>
-	<div id="ui">
-		<div id="name">
-			Username: <input id="uName" value="Unnamed">
-			<button id="setName" onclick="changeName()" maxlength="16" pattern="[A-Za-z0-9]">Set name</button>
-			<input type="checkbox" id="aScroll" checked>Auto scroll
+	<head>
+		<link rel="stylesheet" type="text/css" href="/client/style.css">
+		<title>xss vulnerable chat</title>
+	</head>
+	<body>
+		<div id="chatDiv">
+			
 		</div>
-		<input id="chat_input" value="" required onkeydown = "chatKeyDown(event);">
-	</div>
-	<script src="/client/socket.io.js"></script>
-	<script src="/client/client.js"></script>
-</body>
+		<div id="ui">
+			<div id="name">
+				Username: <input id="uName" value="Unnamed">
+				<button id="setName" onclick="changeName()" maxlength="16" pattern="[A-Za-z0-9]">Set name</button>
+				<input type="checkbox" id="aScroll" checked>Auto scroll
+			</div>
+			<input id="chat_input" value="" required onkeydown = "chatKeyDown(event);">
+		</div>
+		<script src="/client/socket.io.js"></script>
+		<script src="/client/client.js"></script>
+	</body>
 </html>
