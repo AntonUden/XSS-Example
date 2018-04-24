@@ -7,7 +7,13 @@
 	<div id="chatDiv">
 		
 	</div>
-	<input id="chat_input" value="" required onkeydown = "chatKeyDown(event);">
+	<div id="ui">
+		<div id="name">
+			Username: <input id="uName" value="Unnamed">
+			<button id="setName" onclick="changeName()" maxlength="16" pattern="[A-Za-z0-9]">Set name</button>
+		</div>
+		<input id="chat_input" value="" required onkeydown = "chatKeyDown(event);">
+	</div>
 	<script src="/client/socket.io.js"></script>
 	<script src="/client/client.js"></script>
 </body>

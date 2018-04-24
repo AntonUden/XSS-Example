@@ -6,6 +6,15 @@ function chatKeyDown() {
 	}
 }
 
+function changeName() {
+	var name = document.getElementById("uName").value;
+	if(name.length < 1 || name.length > 16) {
+		console.log("Name too short or too long");
+		return;
+	}
+	socket.emit("change_name", name);
+}
+
 function sendChat() {
 	var text = document.getElementById("chat_input").value;
 	document.getElementById("chat_input").value = "";
