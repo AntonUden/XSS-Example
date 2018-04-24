@@ -30,13 +30,15 @@ socket.on("chat", function(data) {
 	var chatDiv = document.getElementById('chatDiv');
 	console.log("[received]: " + data);
 	chatDiv.innerHTML += data + "<br>";
-	chatDiv.scrollTop = chatDiv.scrollHeight;
+	if(document.getElementById("aScroll").checked) {
+		chatDiv.scrollTop = chatDiv.scrollHeight;
+	}
 });
 
 socket.on("chat_data", function(data) {
+	var chatDiv = document.getElementById('chatDiv');
 	while(data.length > 0) {
-		document.getElementById("chatDiv").innerHTML += data.shift() + "<br>";
+		chatDiv.innerHTML += data.shift() + "<br>";
 	}
-	var elem = document.getElementById('chatDiv');
-	elem.scrollTop = elem.scrollHeight;
+	chatDiv.scrollTop = chatDiv.scrollHeight;
 });
