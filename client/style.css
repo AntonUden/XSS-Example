@@ -28,7 +28,7 @@ body {
 #ui {
 	width: 100%;
 	position: fixed;
-	bottom: 4px;
+	bottom: 0px;
 	border:1px solid #000000;
 }
 
