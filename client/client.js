@@ -12,6 +12,7 @@ function changeName() {
 		console.log("Name too short or too long");
 		return;
 	}
+	setCookie("chatUserName", name, 60);
 	socket.emit("change_name", name);
 }
 
@@ -27,18 +28,31 @@ function sendChat() {
 }
 
 socket.on("chat", function(data) {
-	var chatDiv = document.getElementById('chatDiv');
 	console.log("[received]: " + data);
-	chatDiv.innerHTML += data + "<br>";
+	$("#chatDiv").append(data + "<br>");
 	if(document.getElementById("aScroll").checked) {
+		var chatDiv = document.getElementById('chatDiv');
 		chatDiv.scrollTop = chatDiv.scrollHeight;
 	}
 });
 
 socket.on("chat_data", function(data) {
-	var chatDiv = document.getElementById('chatDiv');
 	while(data.length > 0) {
-		chatDiv.innerHTML += data.shift() + "<br>";
+		$("#chatDiv").append(data.shift() + "<br>");
 	}
+	var chatDiv = document.getElementById('chatDiv');
 	chatDiv.scrollTop = chatDiv.scrollHeight;
 });
+
+try {
+	if(getCookie("chatUserName") != "") {
+		if(getCookie("chatUserName").length > 16) {
+			console.error("[Warning] Name stored in cookie is too long. resetting to Unnamed");
+			setCookie("chatUserName", "Unnamed", 360);
+		}
+		document.getElementById("uName").value = getCookie("chatUserName");
+		changeName();
+	} else {
+		setCookie("chatUserName", "Unnamed", 360);
+	}
+} catch(err) {}
