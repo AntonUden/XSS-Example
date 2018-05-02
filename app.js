@@ -23,6 +23,7 @@ var MESSAGES = [];
 function disconnectSocket(id) {
 	SOCKET_LIST[id].disconnect();
 	delete SOCKET_LIST[id];
+	console.log("User with id " + id + " Disconnected");
 }
 
 io.sockets.on("connection", function(socket) {
@@ -30,6 +31,7 @@ io.sockets.on("connection", function(socket) {
 	socket.uName = "Unnamed";
 	SOCKET_LIST[socket.id] = socket;
 	
+	console.log("User with id " + socket.id + " Connected");
 	socket.emit("chat_data", MESSAGES);
 
 	socket.on("disconnect", function() {
