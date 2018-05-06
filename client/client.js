@@ -1,7 +1,8 @@
 var socket = io();
 
-function chatKeyDown() {
-	if (event.keyCode == 13) {
+function chatKeyDown(event) {
+	var kc = event.which || event.keyCode;
+	if (kc == 13) {
 		sendChat();
 	}
 }
