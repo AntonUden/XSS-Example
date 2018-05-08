@@ -13,10 +13,11 @@ body {
 }
 
 #chat_input {
-	width: 99%;
 	position: fixed;
 	bottom: 4px;
 	border:1px solid #000000;
+	width: 99%;
+	margin-left: 2px;
 }
 
 #name {
@@ -29,7 +30,6 @@ body {
 	width: 100%;
 	position: fixed;
 	bottom: 0px;
-	border:1px solid #000000;
 }
 
 #chatDiv {
