@@ -55,7 +55,7 @@ io.sockets.on("connection", function(socket) {
 			data = "[" + socket.uName + "]: " + data;
 			console.log("<Chat>: " + data + " | by user with id " + socket.id);
 			MESSAGES.push(data);
-			for(var s in SOCKET_LIST) {
+			for(let s in SOCKET_LIST) {
 				SOCKET_LIST[s].emit("chat", data);
 			}
 		} catch(err) {}
