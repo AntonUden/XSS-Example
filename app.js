@@ -35,9 +35,7 @@ io.sockets.on("connection", function(socket) {
 	socket.emit("chat_data", MESSAGES);
 
 	socket.on("disconnect", function() {
-		try {
-			disconnectSocket(socket.id);
-		} catch(err) {}
+		disconnectSocket(socket.id);
 	});
 
 	socket.on('change_name', function(data){
