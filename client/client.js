@@ -8,7 +8,7 @@ function chatKeyDown(event) {
 }
 
 function changeName() {
-	let name = document.getElementById("uName").value;
+	let name = $("#uName").val();
 	if(name.length < 1 || name.length > 16) {
 		console.log("Name too short or too long");
 		return;
@@ -18,8 +18,8 @@ function changeName() {
 }
 
 function sendChat() {
-	let text = document.getElementById("chat_input").value;
-	document.getElementById("chat_input").value = "";
+	let text = $("#chat_input").val();
+	$("#chat_input").val("");
 	if(text.length < 1) {
 		console.log("Ignoring empty message");
 		return;
@@ -31,9 +31,9 @@ function sendChat() {
 socket.on("chat", function(data) {
 	console.log("[received]: " + data);
 	$("#chatDiv").append(data + "<br>");
-	if(document.getElementById("aScroll").checked) {
+	if($("#aScroll").prop('checked')) {
 		let chatDiv = document.getElementById('chatDiv');
-		chatDiv.scrollTop = chatDiv.scrollHeight;
+		$("#chatDiv").scrollTop($("#chatDiv").prop('scrollHeight'));
 	}
 });
 
@@ -41,8 +41,13 @@ socket.on("chat_data", function(data) {
 	while(data.length > 0) {
 		$("#chatDiv").append(data.shift() + "<br>");
 	}
-	let chatDiv = document.getElementById('chatDiv');
-	chatDiv.scrollTop = chatDiv.scrollHeight;
+	if($("#aScroll").prop('checked')) {
+		$("#chatDiv").scrollTop($("#chatDiv").prop('scrollHeight'));
+	}
+});
+
+$("#setName").click(function() {
+	changeName();
 });
 
 try {
@@ -51,7 +56,7 @@ try {
 			console.error("[Warning] Name stored in cookie is too long. resetting to Unnamed");
 			setCookie("chatUserName", "Unnamed", 360);
 		}
-		document.getElementById("uName").value = getCookie("chatUserName");
+		$("#uName").val(getCookie("chatUserName"));
 		changeName();
 	} else {
 		setCookie("chatUserName", "Unnamed", 360);
