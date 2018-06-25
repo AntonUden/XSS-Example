@@ -5,6 +5,10 @@
   "scripts": {
     "start": "node app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zeeraa/XSS-Example.git"
+  },
   "dependencies": {
     "express": "4.15.5",
     "socket.io": "2.1.0",
